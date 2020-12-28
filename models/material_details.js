@@ -10,9 +10,9 @@ const material_details = db.define('tbl_material_details', {
     type: Sequelize.ENUM("Issued","Purchased","Received")
   },
   material: {
-    type: Sequelize.ENUM("Cement","Steel","Murum","Gitti","Crush Sand","Kanhan Sand","Wall putty","Plumbing Material",
-    "Electrical Material","Bricks","Paving Block","Cement Frame","Centring Nails","Centring Wire","Color","Sanitery Material",
-    "Grenite","Tiles","Kadappa","Water Tank","Plywood and Furniture","Other")
+    type: Sequelize.ENUM("Cement","Steel","Murum","Gitti","Crushed Sand","Kanhan Sand","Wall putty","Plumbing Material",
+    "Electrical Material","Bricks","Paving Blocks","Cement Frame","Centring Nails","Centring Wire","Color","Sanitary Material",
+    "Granite","Tiles","Kadappa","Water Tank","Plywood and Furniture","Other")
   },
   omaterial: {
     type: Sequelize.STRING
