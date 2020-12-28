@@ -7,13 +7,18 @@ const material_details = db.define('tbl_material_details', {
     type: Sequelize.INTEGER
   },
   material_type: {
-    type: Sequelize.ENUM("Issued","Purchased")
+    type: Sequelize.ENUM("Issued","Purchased","Received")
   },
   material: {
+    type: Sequelize.ENUM("Cement","Steel","Murum","Gitti","Crush Sand","Kanhan Sand","Wall putty","Plumbing Material",
+    "Electrical Material","Bricks","Paving Block","Cement Frame","Centring Nails","Centring Wire","Color","Sanitery Material",
+    "Grenite","Tiles","Kadappa","Water Tank","Plywood and Furniture","Other")
+  },
+  omaterial: {
     type: Sequelize.STRING
   },
   unit: {
-    type: Sequelize.STRING
+    type: Sequelize.ENUM("Bag","Metric ton","Ft","Nos","Kg","Ltr","Sq. Ft")
   },
   unit_rate: {
     type: Sequelize.DECIMAL
@@ -25,7 +30,10 @@ const material_details = db.define('tbl_material_details', {
     type: Sequelize.DECIMAL
   },
   material_from: {
-    type: Sequelize.ENUM("Agency","Contractor","Vendor")
+    type: Sequelize.ENUM("Agency","Contractor","Vendor","Apartment")
+  },
+  location: {
+    type: Sequelize.STRING
   },
   contact_person: {
     type: Sequelize.STRING

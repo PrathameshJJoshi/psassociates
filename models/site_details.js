@@ -22,7 +22,7 @@ const site_details = db.define('tbl_site_details', {
     type: Sequelize.ENUM("Pending","Recieved","Cancelled")
   },
   final_status: {
-    type: Sequelize.ENUM("Available","Booked","InProcess")
+    type: Sequelize.ENUM("Available","Booked","Blocked","InProcess")
   },
   amount_recieved: {
     type: Sequelize.DECIMAL

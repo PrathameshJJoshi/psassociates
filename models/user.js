@@ -21,7 +21,10 @@ const user = db.define('user', {
   },
   password: {
     type: Sequelize.STRING
-  }
+  },
+  account_type: {
+    type: Sequelize.ENUM('Admin','Agent','Accountant','Architect','Marketing-Executive','Office-Boy','Project-Manager','Site-Engineer','Site-Supervisor')
+  },
 });
 
 

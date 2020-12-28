@@ -25,7 +25,7 @@ db.authenticate()
 
 // Index route
 app.get('/',requireToken,(req,res)=>{
-  res.send({email:req.us.email})
+  res.send({fname:req.us.fname,account_type:req.us.account_type,id:req.us.id})
 })
 
 
@@ -110,9 +110,9 @@ app.post('/employee', async (req, res) => {
 
 
 app.post('/expense', async (req, res) => {
-  let { site_id , type, amount, remarks, date} = req.body;
+  let { site_id , type, amount, remarks, date, created_by} = req.body;
   try{
-    const con = new expense_masters({ site_id , type, amount, remarks, date});
+    const con = new expense_masters({ site_id , type, amount, remarks, date, created_by});
     await  con.save();
     res.send("Success")
   }catch(err){
@@ -122,21 +122,23 @@ app.post('/expense', async (req, res) => {
 
 
 app.post('/material', async (req, res) => {
-  let { site_id , material_type, material, unit, unit_rate, quantity, amount, material_from, contact_person, contact_number, remarks, status} = req.body;
-  try{
-    const con = new material_details({ site_id , material_type, material, unit, unit_rate, quantity, amount, material_from, contact_person, contact_number, remarks, status});
-    await  con.save();
-    res.send("Success")
-  }catch(err){
-    return res.status(422).send(err.message)
-  }
+  let { site_id , material_type, material, omaterial, unit, unit_rate, quantity, amount, material_from, location, contact_person, contact_number, remarks, status, created_by} = req.body;
+  
+    const con = new material_details({ site_id , material_type, material, omaterial, unit, unit_rate, quantity, amount, material_from, location, contact_person, contact_number, remarks, status, created_by});
+    await  con.save()
+    .then((data)=>{
+      res.send(data)
+    })
+    .catch(err=>{
+      console.log(err)
+  })
 }); 
 
 
 app.post('/sitedetail', async (req, res) => {
-  let { site_id , flat_number	, party_name, party_contact_number, employee, token_recieved, final_status, amount_recieved, sale_deed, site_visit_date, remarks, status} = req.body;
+  let { site_id , flat_number	, party_name, party_contact_number, employee, token_recieved, final_status, amount_recieved, sale_deed, site_visit_date, remarks, status, created_by} = req.body;
   try{
-    const con = new site_details({ site_id , flat_number	, party_name, party_contact_number, employee, token_recieved, final_status, amount_recieved, sale_deed, site_visit_date, remarks, status});
+    const con = new site_details({ site_id , flat_number	, party_name, party_contact_number, employee, token_recieved, final_status, amount_recieved, sale_deed, site_visit_date, remarks, status, created_by});
     await  con.save();
     res.send("Success")
   }catch(err){

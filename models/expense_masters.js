@@ -10,6 +10,9 @@ const expense_masters = db.define('tbl_expense_masters', {
   type: {
     type: Sequelize.ENUM("Advance","Expense")
   },
+  advance_from: {
+    type: Sequelize.STRING
+  },
   amount: {
     type: Sequelize.DECIMAL
   },
