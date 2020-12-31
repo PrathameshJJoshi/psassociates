@@ -25,7 +25,7 @@ db.authenticate()
 
 // Index route
 app.get('/',requireToken,(req,res)=>{
-  res.send({fname:req.us.fname,account_type:req.us.account_type,id:req.us.id})
+  res.send({fname:req.us.fname,account_type:req.us.account_type,id:req.us.id,username:req.us.username})
 })
 
 
