@@ -1,9 +1,15 @@
 const Sequelize = require('sequelize');
 
 
-module.exports =  new Sequelize('sql12384098','sql12384098','zQKqUpGkP2', {
-  host: 'sql12.freemysqlhosting.net',
-  // port:3306,
+const db="adhemant_psassociates";
+const username="ps_admin";
+const password="Qmk^n832TypbnEfl";
+const host="localhost";
+const port="3306";
+
+module.exports =  new Sequelize(db,username,password, {
+  host: host,
+  port:port,
   dialect: 'mariadb',
   // operatorsAliases: false,
 

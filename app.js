@@ -4,6 +4,7 @@ var bcrypt = require('bcryptjs');
 const app = express();
 const user = require('./models/user');
 const material_details = require('./models/material_details')
+const project_details = require('./models/project_details')
 const site_details = require('./models/site_details')
 const site_masters = require('./models/site_masters')
 const expense_masters = require('./models/expense_masters')
@@ -71,6 +72,7 @@ app.post('/signup',async (req, res) => {
 
 app.post('/signin',async (req,res)=>{
   const {username,password} = req.body
+  console.log(username,password)
   if(!username || !password){
       return res.status(422).send({error :"must provide username or password"})
   }
@@ -159,24 +161,24 @@ app.post('/sitemaster', async (req, res) => {
 }); 
 
 
-// app.post('/searc',async (req,res)=>{
-//     const {category} = req.body
-//     // const use=[];
-//     console.log(category)
-//     // if(!use){
-//       //   return res.status(422).send({error :"must provide username or password2"})
-//       // }
-//       try{
-//         const use = await client.findAll({ where: { category } })
-//         // use.push(one)
-//         res.send(use)
-//         console.log(use)
-//         // return use
-//       }catch(err){
-//         return res.status(422).send({error :"Error"})
-//     }
-//     // res.send(use)
-//   })
+app.post('/searc',async (req,res)=>{
+    const {site_id} = req.body
+    // const use=[];
+    console.log(site_id)
+    // if(!use){
+      //   return res.status(422).send({error :"must provide username or password2"})
+      // }
+      try{
+        const use = await project_details.findAll({ where: { site_id:site_id } })
+        // use.push(one)
+        res.send(use)
+        console.log(use)
+        // return use
+      }catch(err){
+        return res.send(err)
+    }
+    // res.send(use)
+  })
 
 // const port = process.env.PORT;
 
